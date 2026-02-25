@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bato-Bato Pick</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="firebase-init.js"></script>
+</head>
+
+<body>
+  <main class="container">
+    <div class="stats-header">
+      <span id="totalWinsDisplay">Legendary Wins: 0</span>
+    </div>
+
+    <div class="header">
+      <h1>Bato-Bato Pick</h1>
+      <div class="header-controls">
+        <span id="userGreeting"></span>
+        <a id="adminLink" href="admin.html" title="Admin Portal" style="display:none; color: white; text-decoration: none; font-weight: bold; padding: 8px 12px; background: rgba(255,107,107,0.3); border-radius: 6px;">⚙️ Admin</a>
+        <button id="soundToggle" class="icon-btn" title="Toggle sound">🔊</button>
+        <button id="helpBtn" class="help-toggle" onclick="openHelp()" title="How to play">❓</button>
+        <button id="logoutBtn" class="icon-btn" onclick="logout()" title="Logout">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="choices">
+      <button class="choice-btn" data-choice="rock" onclick="playGame('rock')">👊</button>
+      <button class="choice-btn" data-choice="paper" onclick="playGame('paper')">🖐</button>
+      <button class="choice-btn" data-choice="scissors" onclick="playGame('scissors')">✌️</button>
+    </div>
+
+    <div id="playerDisplay" class="display-box">PLAYER: —</div>
+    <div id="computerDisplay" class="display-box">COMPUTER: —</div>
+    <div id="resultDisplay" class="result"></div>
+    <div id="matchStatus" class="match-status"></div>
+
+    <div class="score-board">
+      <div class="score-card">
+        <span class="label">PLAYER</span>
+        <span id="playerScoreDisplay" class="score-num">0</span>
+      </div>
+      <div class="score-card">
+        <span class="label">AI</span>
+        <span id="computerScoreDisplay" class="score-num">0</span>
+      </div>
+    </div>
+
+    <div id="streakDisplay" class="streak-badge"></div>
+    <div class="actions-row">
+      <button id="resetBtn" class="reset-btn" onclick="resetGame()" style="display:none;">REMATCH</button>
+    </div>
+
+    <div id="helpModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <h2>How to Play</h2>
+        <ul class="rules-list">
+          <li>👊 Rock beats Scissors</li>
+          <li>🖐 Paper beats Rock</li>
+          <li>✌️ Scissors beats Paper</li>
+        </ul>
+        <button class="close-btn" onclick="closeHelp()">GOT IT!</button>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="index.js"></script>
+</body>
+</html>
